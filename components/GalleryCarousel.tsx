@@ -79,15 +79,15 @@ const GalleryCarousel: React.FC = () => {
                   zIndex,
                 }}
               >
-                <div className="w-full h-[400px] md:h-full max-w-4xl relative group">
+                <div className="w-full h-[400px] md:h-full max-w-4xl relative group overflow-hidden">
                   <img
                     src={url}
                     alt={`Signature Style ${index + 1}`}
-                    className="w-full h-full object-cover shadow-2xl grayscale group-hover:grayscale-0 transition-all duration-[1.5s]"
+                    className="w-full h-full object-cover shadow-2xl grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[1.5s] ease-out"
                   />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-700"></div>
                   {/* Subtle Frame */}
-                  <div className="absolute inset-4 border border-white/5 pointer-events-none"></div>
+                  <div className="absolute inset-4 border border-white/5 pointer-events-none z-10"></div>
                 </div>
               </div>
             );
