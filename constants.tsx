@@ -4,34 +4,34 @@ import { Service, Testimonial, Barber } from './types';
 export const SERVICES: Service[] = [
   {
     id: '1',
-    name: 'Executive Haircut',
-    price: '$45',
-    duration: '45 mins',
-    description: 'Precision cut tailored to your face shape and hair type. Includes scalp massage and style.',
-    image: 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=800'
-  },
-  {
-    id: '2',
-    name: 'Luxury Beard Grooming',
-    price: '$35',
-    duration: '30 mins',
-    description: 'Hot towel treatment, beard shaping, and precision trimming with premium oils.',
+    name: 'The Royal Haircut',
+    price: '$55',
+    duration: '60 mins',
+    description: 'Our signature precision cut, followed by an revitalizing scalp therapy and hand-styled finish.',
     image: 'https://images.unsplash.com/photo-1621605815841-aa897bd0761d?auto=format&fit=crop&q=80&w=800'
   },
   {
+    id: '2',
+    name: 'Artisan Beard Sculpt',
+    price: '$40',
+    duration: '45 mins',
+    description: 'Sophisticated shaping with a focus on facial geometry, using rare botanical oils and hot steam.',
+    image: 'https://images.unsplash.com/photo-1593702295094-ada44bc6a09c?auto=format&fit=crop&q=80&w=800'
+  },
+  {
     id: '3',
-    name: 'Signature Hot Shave',
-    price: '$50',
-    duration: '40 mins',
-    description: 'Traditional straight razor shave with essential oil prep and cold towel finish.',
+    name: 'Executive Straight Shave',
+    price: '$65',
+    duration: '50 mins',
+    description: 'A master-class in tradition. Triple hot towel treatment with a bespoke post-shave mask.',
     image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=800'
   },
   {
     id: '4',
-    name: 'Revitalizing Facial',
-    price: '$65',
+    name: 'Gentleman\'s Facial',
+    price: '$85',
     duration: '60 mins',
-    description: 'Deep cleansing, exfoliation, and hydration treatment specifically designed for men.',
+    description: 'Deep dermal purification designed specifically for men’s skin health and stress relief.',
     image: 'https://images.unsplash.com/photo-1512690118294-7049f76a503f?auto=format&fit=crop&q=80&w=800'
   }
 ];
@@ -39,24 +39,24 @@ export const SERVICES: Service[] = [
 export const BARBERS: Barber[] = [
   {
     id: 'b1',
-    name: 'Marco V.',
-    specialty: 'Fade Expert',
-    experience: '12 Years',
-    image: 'https://images.unsplash.com/photo-1492562080023-ab3dbdf5bb3d?auto=format&fit=crop&q=80&w=400'
+    name: 'Alessandro M.',
+    specialty: 'Master Scissorman',
+    experience: '18 Years',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600'
   },
   {
     id: 'b2',
-    name: 'Julian S.',
-    specialty: 'Traditional Shaving',
-    experience: '8 Years',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400'
+    name: 'Julian Saint',
+    specialty: 'Traditional Razorist',
+    experience: '12 Years',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=600'
   },
   {
     id: 'b3',
-    name: 'Leo R.',
-    specialty: 'Artistic Styling',
+    name: 'Leo Romano',
+    specialty: 'Creative Director',
     experience: '15 Years',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400'
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=600'
   }
 ];
 
@@ -65,24 +65,16 @@ export const TESTIMONIALS: Testimonial[] = [
     id: 1,
     name: 'James Harrison',
     role: 'Tech Executive',
-    content: 'The best grooming experience I\'ve ever had. Marco is a true artist with the scissors.',
+    content: 'The most thorough grooming ritual I’ve experienced. The attention to detail is truly unparalleled.',
     rating: 5,
     avatar: 'https://i.pravatar.cc/150?u=james'
   },
   {
     id: 2,
-    name: 'Sarah Mitchell',
-    role: 'Influencer',
-    content: 'Brought my partner here for his birthday. The service was impeccable and the vibe is unmatched.',
+    name: 'Sebastian V.',
+    role: 'Fashion Consultant',
+    content: 'A perfect blend of old-world charm and modern precision. Luxe Barber is in a league of its own.',
     rating: 5,
-    avatar: 'https://i.pravatar.cc/150?u=sarah'
-  },
-  {
-    id: 3,
-    name: 'Daniel Kim',
-    role: 'Modern Gentleman',
-    content: 'Luxe Barber has been my go-to for years. Professional, clean, and always on trend.',
-    rating: 5,
-    avatar: 'https://i.pravatar.cc/150?u=daniel'
+    avatar: 'https://i.pravatar.cc/150?u=seb'
   }
 ];
