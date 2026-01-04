@@ -54,10 +54,8 @@ const Hero: React.FC = () => {
             </p>
             
             <div className="flex flex-wrap items-center gap-12">
-              <a href="#booking" className="group relative bg-accent text-white px-12 py-5 text-[11px] font-bold tracking-[0.3em] uppercase transition-all overflow-hidden">
-                <span className="relative z-10">Book Appointment</span>
-                <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                <span className="absolute inset-0 z-20 flex items-center justify-center text-black opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">Book Appointment</span>
+              <a href="#booking" className="bg-accent text-white px-12 py-5 text-[11px] font-bold tracking-[0.3em] uppercase transition-all hover:bg-white hover:text-black">
+                Book Appointment
               </a>
               
               <a href="#services" className="nav-link flex items-center gap-4 group">
