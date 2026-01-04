@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
       const x = (clientX - left) / width - 0.5;
       const y = (clientY - top) / height - 0.5;
       
-      card.style.transform = `rotateY(${x * 15}deg) rotateX(${y * -15}deg)`;
+      card.style.transform = `rotateY(${x * 12}deg) rotateX(${y * -12}deg)`;
     };
 
     const handleMouseLeave = () => {
@@ -31,76 +31,87 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center bg-[#080808] overflow-hidden">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-white/[0.02] to-transparent pointer-events-none"></div>
-      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-accent/5 blur-[120px] rounded-full pointer-events-none"></div>
+    <section id="home" className="relative min-h-screen flex items-center bg-[#050505] overflow-hidden">
+      {/* Cinematic Background Image Layer */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=1920" 
+          alt="Luxury Salon Background" 
+          className="w-full h-full object-cover opacity-30 grayscale brightness-50"
+          loading="eager"
+        />
+        {/* Multi-layered Gradients for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/80 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
+      </div>
       
-      <div className="container mx-auto px-8 md:px-16 pt-32 md:pt-0 relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-24">
-          <div className="w-full md:w-1/2 reveal">
-            <div className="flex items-center gap-4 mb-8">
-              <span className="w-12 h-[1px] bg-accent"></span>
-              <p className="text-accent text-[10px] tracking-[0.6em] uppercase font-bold">New York — Heritage Since 2012</p>
+      <div className="container mx-auto px-8 md:px-16 pt-32 lg:pt-0 relative z-20">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+          
+          {/* Text content - High Z-index */}
+          <div className="w-full lg:w-3/5 reveal relative z-30">
+            <div className="flex items-center gap-6 mb-8">
+              <span className="w-16 h-[1px] bg-accent"></span>
+              <p className="text-accent text-[10px] tracking-[0.7em] uppercase font-bold">Heritage Grooming — NYC</p>
             </div>
             
-            <h1 className="text-7xl md:text-8xl lg:text-9xl font-medium mb-10 leading-[0.9] tracking-tight">
-              Mastering <br />
-              <span className="italic text-accent">Style.</span>
+            <h1 className="text-7xl md:text-8xl lg:text-[110px] font-medium mb-10 leading-[0.85] tracking-tighter text-white drop-shadow-2xl">
+              Sovereign <br />
+              <span className="italic text-accent serif">Artistry.</span>
             </h1>
             
-            <p className="text-gray-400 text-lg font-light max-w-md mb-14 leading-relaxed italic">
-              "Grooming is the secret of real elegance. The best clothes, the most expensive jewelry and the finest shoes are nothing without a great haircut."
-            </p>
+            <div className="max-w-md mb-16">
+              <p className="text-gray-300 text-xl font-light leading-relaxed italic border-l-2 border-accent/40 pl-8">
+                Transcend the ordinary. We curate grooming experiences that define your personal narrative with surgical precision.
+              </p>
+            </div>
             
             <div className="flex flex-wrap items-center gap-12">
-              <a href="#booking" className="bg-accent text-white px-12 py-5 text-[11px] font-bold tracking-[0.3em] uppercase transition-all hover:bg-white hover:text-black">
-                Book Appointment
+              {/* Cleaned up Button - No extra boxes */}
+              <a href="#booking" className="px-12 py-5 bg-accent text-white text-[11px] font-bold tracking-[0.4em] uppercase transition-all duration-300 hover:bg-white hover:text-black">
+                Reserve Seat
               </a>
               
-              <a href="#services" className="nav-link flex items-center gap-4 group">
-                Menu
-                <span className="w-8 h-[1px] bg-white/20 group-hover:w-12 group-hover:bg-accent transition-all duration-500"></span>
+              <a href="#services" className="group flex items-center gap-6 text-[10px] tracking-[0.5em] uppercase font-bold text-gray-400 hover:text-white transition-colors">
+                The Menu
+                <span className="w-10 h-[1px] bg-white/20 group-hover:w-20 group-hover:bg-accent transition-all duration-700"></span>
               </a>
             </div>
           </div>
           
-          <div className="w-full md:w-1/2 flex justify-center reveal" style={{ transitionDelay: '300ms' }}>
+          {/* Floating 3D Component - Pushed back to prevent text overlap */}
+          <div className="w-full lg:w-2/5 flex justify-center lg:justify-end reveal z-10" style={{ transitionDelay: '500ms' }}>
             <div className="tilt-container">
               <div 
                 ref={tiltRef} 
-                className="tilt-card relative w-[320px] md:w-[450px] aspect-[4/5] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)]"
-                style={{ transition: 'transform 0.2s ease-out' }}
+                className="tilt-card relative w-[260px] md:w-[380px] aspect-[4/5] shadow-[0_60px_100px_-20px_rgba(0,0,0,0.9)]"
               >
-                {/* Main 3D Card Content */}
-                <div className="absolute inset-0 overflow-hidden bg-[#111]">
+                {/* Image Frame */}
+                <div className="absolute inset-0 overflow-hidden bg-[#0a0a0a] border border-white/10">
                   <img 
-                    src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=95&w=1200" 
-                    alt="Signature Grooming" 
-                    className="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-1000"
+                    src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&q=85&w=800" 
+                    alt="Signature Style" 
+                    className="w-full h-full object-cover grayscale brightness-[0.8] hover:grayscale-0 transition-all duration-[2s]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                 </div>
                 
-                {/* Floating Elements for depth */}
-                <div className="absolute -top-10 -right-10 w-40 h-40 border border-accent/20 translate-z-10 pointer-events-none"></div>
-                <div className="absolute -bottom-6 -left-6 bg-accent p-6 translate-z-20 shadow-xl hidden md:block">
-                  <span className="text-white text-[10px] tracking-[0.3em] uppercase font-bold block">Exclusive</span>
-                  <span className="text-white text-3xl font-serif italic">Artistry</span>
+                {/* Visual Details */}
+                <div className="absolute -top-6 -right-6 w-32 h-32 border-t border-r border-accent/20 pointer-events-none"></div>
+                <div className="absolute -bottom-4 -left-4 bg-accent/90 p-6 shadow-3xl">
+                  <span className="text-white text-[9px] tracking-[0.4em] uppercase font-bold block mb-1">Authentic</span>
+                  <span className="text-white text-2xl font-serif italic block">Est. 2012</span>
                 </div>
-                
-                {/* Visual Accent */}
-                <div className="absolute top-1/2 -right-4 w-[1px] h-32 bg-accent/40"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
       
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-30">
-        <span className="text-[9px] tracking-[0.5em] uppercase font-bold">Scroll</span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent"></div>
+      {/* Scroll Down Hint */}
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6 opacity-30">
+        <div className="w-[1px] h-16 bg-gradient-to-b from-white to-transparent"></div>
+        <span className="text-[9px] tracking-[0.8em] uppercase font-bold text-white">Scroll</span>
       </div>
     </section>
   );

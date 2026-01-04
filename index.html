@@ -25,7 +25,7 @@
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
-        h1, h2, h3, h4, .font-serif {
+        h1, h2, h3, h4, .serif {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 500;
         }
@@ -46,7 +46,7 @@
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .reveal.active {
             opacity: 1;
@@ -55,11 +55,11 @@
 
         /* 3D Effects */
         .tilt-container {
-            perspective: 1000px;
+            perspective: 2000px;
         }
         .tilt-card {
             transform-style: preserve-3d;
-            transition: transform 0.1s ease;
+            transition: transform 0.2s ease-out;
         }
 
         /* Grain Overlay */
@@ -71,23 +71,22 @@
             height: 100%;
             pointer-events: none;
             z-index: 9999;
-            opacity: 0.04;
+            opacity: 0.03;
             background-image: url("https://grainy-gradients.vercel.app/noise.svg");
         }
 
         /* Minimal Scrollbar */
-        ::-webkit-scrollbar { width: 3px; }
+        ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: #333; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(2deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .float-animation {
-            animation: float 6s ease-in-out infinite;
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
         }
     </style>
 <script type="importmap">
@@ -107,9 +106,12 @@
     <script>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('active');
+                  observer.unobserve(entry.target);
+                }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.15 });
 
         window.addEventListener('load', () => {
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
