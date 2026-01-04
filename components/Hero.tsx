@@ -1,20 +1,36 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Hero: React.FC = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background with overlay */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=2000" 
-          alt="Barber Background" 
-          className="w-full h-full object-cover scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
+      {/* Background with parallax overlay */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div 
+          className="absolute inset-0 w-full h-full will-change-transform transition-transform duration-75 ease-out"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        >
+          <img 
+            src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=2000" 
+            alt="Barber Background" 
+            className="w-full h-full object-cover scale-110"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-black/40 z-10"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 pt-20">
+      <div className="container mx-auto px-6 relative z-20 flex flex-col md:flex-row items-center justify-between gap-12 pt-20">
         <div className="max-w-2xl">
           <h2 className="text-[#d4af37] font-semibold tracking-[0.3em] mb-4 text-sm md:text-base animate-pulse">ESTABLISHED SINCE 2012</h2>
           <h1 className="text-5xl md:text-8xl font-bold leading-tight mb-6">
@@ -31,7 +47,10 @@ const Hero: React.FC = () => {
         </div>
 
         <div className="hidden lg:block perspective-1000">
-          <div className="w-[450px] h-[600px] glass rounded-2xl overflow-hidden transform rotate-y-12 shadow-2xl transition-transform hover:rotate-y-0 duration-700">
+          <div 
+            className="w-[450px] h-[600px] glass rounded-2xl overflow-hidden transform rotate-y-12 shadow-2xl transition-transform hover:rotate-y-0 duration-700"
+            style={{ transform: `rotateY(12deg) translateY(${scrollY * -0.05}px)` }}
+          >
             <img 
               src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&q=80&w=1000" 
               alt="Model Grooming" 
