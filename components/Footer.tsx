@@ -3,69 +3,64 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-black py-20 border-t border-white/5">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
-          <div className="space-y-6">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 gold-bg rounded-full flex items-center justify-center text-black font-bold text-xl">L</div>
-              <span className="text-xl font-bold tracking-widest gold-text">LUXE BARBER</span>
-            </div>
-            <p className="text-gray-500 leading-relaxed">
-              Elevating the art of grooming since 2012. We provide an unparalleled experience for the modern gentleman.
+    <footer className="bg-black py-32 border-t border-white/5 relative overflow-hidden">
+      {/* Background visual detail */}
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/5 blur-[150px] rounded-full translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
+
+      <div className="container mx-auto px-8 md:px-16 relative z-10">
+        <div className="flex flex-col lg:flex-row justify-between gap-24 mb-32">
+          <div className="max-w-md">
+            <span className="text-2xl font-medium tracking-[0.4em] uppercase block mb-10">Luxe Barber</span>
+            <p className="text-gray-500 text-base leading-relaxed font-light mb-12 italic">
+              "We don't just cut hair; we curate the visual narrative of your personal brand. Excellence is our only standard."
             </p>
-            <div className="flex gap-4">
-              {['FB', 'IG', 'TW', 'YT'].map((s) => (
-                <a key={s} href="#" className="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center text-xs font-bold hover:border-[#d4af37] hover:text-[#d4af37] transition-all">
-                  {s}
+            <div className="flex gap-12">
+              {['Instagram', 'LinkedIn', 'YouTube'].map((s) => (
+                <a key={s} href="#" className="group relative text-[10px] tracking-[0.3em] uppercase font-bold text-gray-500 overflow-hidden">
+                  <span className="inline-block transition-transform duration-500 group-hover:-translate-y-full">{s}</span>
+                  <span className="absolute left-0 top-0 translate-y-full transition-transform duration-500 group-hover:translate-y-0 text-accent">{s}</span>
                 </a>
               ))}
             </div>
           </div>
 
-          <div>
-            <h4 className="text-lg font-bold mb-8 font-serif">Quick Links</h4>
-            <ul className="space-y-4 text-gray-500">
-              <li><a href="#home" className="hover:text-white transition-colors">Home</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
-              <li><a href="#consultation" className="hover:text-white transition-colors">AI Stylist</a></li>
-              <li><a href="#booking" className="hover:text-white transition-colors">Book Now</a></li>
-            </ul>
-          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20">
+            <div>
+              <h4 className="text-accent text-[10px] tracking-[0.5em] uppercase font-bold mb-10">Studio Map</h4>
+              <ul className="space-y-6 text-[11px] tracking-widest uppercase font-bold text-gray-500">
+                <li><a href="#home" className="hover:text-white transition-colors">Frontier</a></li>
+                <li><a href="#services" className="hover:text-white transition-colors">The Menu</a></li>
+                <li><a href="#consultation" className="hover:text-white transition-colors">AI Studio</a></li>
+                <li><a href="#team" className="hover:text-white transition-colors">Artisans</a></li>
+              </ul>
+            </div>
 
-          <div>
-            <h4 className="text-lg font-bold mb-8 font-serif">Working Hours</h4>
-            <ul className="space-y-4 text-gray-500">
-              <li className="flex justify-between"><span>Mon - Fri</span> <span className="text-white">09 AM - 09 PM</span></li>
-              <li className="flex justify-between"><span>Saturday</span> <span className="text-white">10 AM - 08 PM</span></li>
-              <li className="flex justify-between"><span>Sunday</span> <span className="text-[#d4af37]">CLOSED</span></li>
-            </ul>
-          </div>
+            <div>
+              <h4 className="text-accent text-[10px] tracking-[0.5em] uppercase font-bold mb-10">Availability</h4>
+              <ul className="space-y-6 text-xs text-gray-500 font-light">
+                <li className="flex justify-between border-b border-white/5 pb-2"><span>Mon - Thu</span> <span className="text-white">09 — 21</span></li>
+                <li className="flex justify-between border-b border-white/5 pb-2"><span>Friday</span> <span className="text-white">09 — 22</span></li>
+                <li className="flex justify-between border-b border-white/5 pb-2"><span>Saturday</span> <span className="text-white">10 — 20</span></li>
+                <li className="flex justify-between"><span>Sunday</span> <span className="text-accent italic font-bold">Privé Sessions</span></li>
+              </ul>
+            </div>
 
-          <div>
-            <h4 className="text-lg font-bold mb-8 font-serif">Contact Info</h4>
-            <ul className="space-y-4 text-gray-500">
-              <li className="flex gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#d4af37]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                </svg>
-                123 Elegance St, Manhattan, NY
-              </li>
-              <li className="flex gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#d4af37]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                hello@luxebarber.com
-              </li>
-            </ul>
+            <div>
+              <h4 className="text-accent text-[10px] tracking-[0.5em] uppercase font-bold mb-10">Inquiries</h4>
+              <ul className="space-y-6 text-xs text-gray-500 font-light">
+                <li>123 Luxury Avenue,<br />Manhattan, NYC 10001</li>
+                <li className="text-white font-medium">+1 (212) 888 7766</li>
+                <li>concierge@luxebarber.com</li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-600 text-sm">
-          <p>© 2024 LUXE BARBER. All Rights Reserved.</p>
-          <div className="flex gap-8">
-            <a href="#" className="hover:text-white">Privacy Policy</a>
-            <a href="#" className="hover:text-white">Terms of Service</a>
+        <div className="pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] tracking-[0.3em] uppercase font-bold text-gray-600">
+          <p>© 2024 LUXE BARBER COLLECTIVE. ALL RIGHTS RESERVED.</p>
+          <div className="flex gap-12">
+            <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-accent transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>

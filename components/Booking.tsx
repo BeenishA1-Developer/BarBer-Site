@@ -25,59 +25,42 @@ const Booking: React.FC = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    // Reset form after successful booking
     setStep(1);
-    setFormData({
-      service: '',
-      barber: '',
-      date: '',
-      time: '09:00 AM'
-    });
+    setFormData({ service: '', barber: '', date: '', time: '09:00 AM' });
   };
 
   return (
-    <section id="booking" className="py-24 bg-[#0a0a0a]">
-      <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto glass rounded-[3rem] overflow-hidden flex flex-col md:flex-row shadow-2xl border border-[#d4af37]/10">
-          <div className="md:w-1/3 gold-bg p-12 text-black flex flex-col justify-between">
-            <div>
-              <h3 className="text-3xl font-bold mb-6 font-serif">Reserve Your Chair</h3>
-              <div className="space-y-6">
-                <div className={`flex items-center gap-4 transition-all ${step >= 1 ? 'opacity-100' : 'opacity-40'}`}>
-                  <div className="w-8 h-8 rounded-full border-2 border-black flex items-center justify-center font-bold">1</div>
-                  <span className="font-bold text-sm tracking-widest">SERVICE</span>
-                </div>
-                <div className={`flex items-center gap-4 transition-all ${step >= 2 ? 'opacity-100' : 'opacity-40'}`}>
-                  <div className="w-8 h-8 rounded-full border-2 border-black flex items-center justify-center font-bold">2</div>
-                  <span className="font-bold text-sm tracking-widest">BARBER</span>
-                </div>
-                <div className={`flex items-center gap-4 transition-all ${step >= 3 ? 'opacity-100' : 'opacity-40'}`}>
-                  <div className="w-8 h-8 rounded-full border-2 border-black flex items-center justify-center font-bold">3</div>
-                  <span className="font-bold text-sm tracking-widest">SCHEDULE</span>
-                </div>
-              </div>
-            </div>
-            <div className="mt-12 md:mt-0">
-              <p className="text-xs uppercase tracking-[0.2em] font-bold opacity-70">NEED HELP?</p>
-              <p className="text-lg font-bold underline">+1 (234) 567-890</p>
-            </div>
+    <section id="booking" className="py-32 bg-white text-black">
+      <div className="container mx-auto px-8 md:px-16">
+        <div className="max-w-3xl mx-auto reveal">
+          <div className="text-center mb-20">
+            <h2 className="text-xs tracking-[0.5em] uppercase text-accent font-bold mb-4">Reservation</h2>
+            <h3 className="text-5xl md:text-6xl font-medium italic">Book Your Experience</h3>
           </div>
 
-          <div className="md:w-2/3 p-12">
+          <div className="flex justify-center gap-10 mb-16">
+            {[1, 2, 3].map(s => (
+              <div key={s} className="flex flex-col items-center">
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-bold border ${step >= s ? 'bg-black text-white border-black' : 'border-black/10 text-black/20'}`}>
+                  {s}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-[#F8F8F8] p-10 md:p-16 border border-black/5 min-h-[400px]">
             {step === 1 && (
-              <div className="animate-fade-in">
-                <h4 className="text-2xl font-bold mb-8">Select a Service</h4>
+              <div className="space-y-6">
+                <p className="text-[10px] tracking-[0.3em] uppercase font-bold text-gray-400 mb-8 text-center">Step 01 — Select Service</p>
                 <div className="grid grid-cols-1 gap-4">
-                  {['Executive Haircut', 'Beard Grooming', 'The Signature Shave', 'Complete Package'].map((s) => (
+                  {['The Essential Cut', 'Beard Refinery', 'Signature Shave', 'Dermal Therapy'].map((s) => (
                     <button 
                       key={s}
                       onClick={() => { setFormData({...formData, service: s}); nextStep(); }}
-                      className={`w-full p-6 rounded-2xl border transition-all text-left flex justify-between items-center ${formData.service === s ? 'border-[#d4af37] bg-[#d4af37]/5' : 'border-white/5 hover:border-white/20'}`}
+                      className={`w-full py-6 px-8 text-left border transition-all flex justify-between items-center group ${formData.service === s ? 'border-accent bg-white' : 'border-black/5 bg-white hover:border-black/20'}`}
                     >
-                      <span className="font-semibold">{s}</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 opacity-40" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                      </svg>
+                      <span className="text-lg font-medium">{s}</span>
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity text-accent">Select</span>
                     </button>
                   ))}
                 </div>
@@ -85,128 +68,80 @@ const Booking: React.FC = () => {
             )}
 
             {step === 2 && (
-              <div className="animate-fade-in">
-                <h4 className="text-2xl font-bold mb-8">Choose Your Master Barber</h4>
+              <div className="space-y-6">
+                <p className="text-[10px] tracking-[0.3em] uppercase font-bold text-gray-400 mb-8 text-center">Step 02 — Select Artisan</p>
                 <div className="grid grid-cols-1 gap-4">
-                  {['Marco V.', 'Julian S.', 'Leo R.', 'Anyone Available'].map((b) => (
+                  {['Julian M.', 'Sebastian V.', 'Marco R.', 'Anyone Available'].map((b) => (
                     <button 
                       key={b}
                       onClick={() => { setFormData({...formData, barber: b}); nextStep(); }}
-                      className={`w-full p-6 rounded-2xl border transition-all text-left flex justify-between items-center ${formData.barber === b ? 'border-[#d4af37] bg-[#d4af37]/5' : 'border-white/5 hover:border-white/20'}`}
+                      className={`w-full py-6 px-8 text-left border transition-all flex justify-between items-center group ${formData.barber === b ? 'border-accent bg-white' : 'border-black/5 bg-white hover:border-black/20'}`}
                     >
-                      <span className="font-semibold">{b}</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 opacity-40" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                      </svg>
+                      <span className="text-lg font-medium">{b}</span>
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity text-accent">Select</span>
                     </button>
                   ))}
                 </div>
-                <button onClick={prevStep} className="mt-8 text-gray-500 hover:text-white transition-colors flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  Back
-                </button>
+                <button onClick={prevStep} className="mt-8 text-gray-400 hover:text-black transition-colors text-[10px] tracking-[0.2em] uppercase font-bold">← Back</button>
               </div>
             )}
 
             {step === 3 && (
-              <div className="animate-fade-in">
-                <h4 className="text-2xl font-bold mb-8">Confirm Details</h4>
-                <div className="bg-white/5 p-8 rounded-3xl space-y-4 mb-8">
-                  <div className="flex justify-between">
-                    <span className="text-gray-500 uppercase text-[10px] tracking-widest font-bold">Service</span>
-                    <span className="font-bold">{formData.service}</span>
+              <div className="space-y-10">
+                <p className="text-[10px] tracking-[0.3em] uppercase font-bold text-gray-400 mb-8 text-center">Step 03 — Final Schedule</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-2">
+                    <label className="text-[10px] tracking-widest uppercase font-bold text-gray-400">Date</label>
+                    <input 
+                      type="date" 
+                      value={formData.date}
+                      onChange={(e) => setFormData({...formData, date: e.target.value})}
+                      className="w-full bg-white border border-black/10 p-4 focus:outline-none focus:border-accent text-sm" 
+                    />
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-500 uppercase text-[10px] tracking-widest font-bold">Barber</span>
-                    <span className="font-bold">{formData.barber}</span>
+                  <div className="space-y-2">
+                    <label className="text-[10px] tracking-widest uppercase font-bold text-gray-400">Time</label>
+                    <select 
+                      value={formData.time}
+                      onChange={(e) => setFormData({...formData, time: e.target.value})}
+                      className="w-full bg-white border border-black/10 p-4 focus:outline-none focus:border-accent text-sm"
+                    >
+                      <option value="09:00 AM">09:00 AM</option>
+                      <option value="10:30 AM">10:30 AM</option>
+                      <option value="01:00 PM">01:00 PM</option>
+                      <option value="03:30 PM">03:30 PM</option>
+                    </select>
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4 mb-8">
-                  <input 
-                    type="date" 
-                    value={formData.date}
-                    onChange={(e) => setFormData({...formData, date: e.target.value})}
-                    className="bg-black/40 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-[#d4af37]" 
-                  />
-                  <select 
-                    value={formData.time}
-                    onChange={(e) => setFormData({...formData, time: e.target.value})}
-                    className="bg-black/40 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-[#d4af37]"
-                  >
-                    <option value="09:00 AM">09:00 AM</option>
-                    <option value="10:30 AM">10:30 AM</option>
-                    <option value="01:00 PM">01:00 PM</option>
-                    <option value="03:30 PM">03:30 PM</option>
-                  </select>
+                
+                <div className="bg-white border border-black/5 p-8 space-y-3">
+                   <div className="flex justify-between text-sm"><span className="text-gray-400 italic">Service</span> <span>{formData.service}</span></div>
+                   <div className="flex justify-between text-sm"><span className="text-gray-400 italic">Barber</span> <span>{formData.barber}</span></div>
                 </div>
+
                 <button 
                   onClick={handleConfirm}
-                  className="w-full py-5 gold-bg text-black font-bold rounded-2xl hover:scale-[1.02] transition-transform active:scale-95 shadow-xl"
+                  className="w-full py-5 bg-black text-white font-bold text-[11px] tracking-[0.3em] uppercase hover:bg-accent transition-all"
                 >
-                  CONFIRM BOOKING
+                  Confirm Appointment
                 </button>
-                <button onClick={prevStep} className="mt-8 text-gray-500 hover:text-white transition-colors flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  Back
-                </button>
+                <button onClick={prevStep} className="block text-gray-400 hover:text-black transition-colors text-[10px] tracking-[0.2em] uppercase font-bold">← Back</button>
               </div>
             )}
           </div>
         </div>
       </div>
 
-      {/* Confirmation Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm animate-fade-in">
-          <div className="glass max-w-lg w-full rounded-[2.5rem] p-10 border border-[#d4af37]/30 shadow-2xl relative">
-            <div className="text-center mb-8">
-              <div className="w-20 h-20 gold-bg rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(212,175,55,0.3)]">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h3 className="text-3xl font-bold font-serif mb-2">Booking Confirmed</h3>
-              <p className="text-gray-400">Your appointment is scheduled! See you soon.</p>
-            </div>
-
-            <div className="space-y-4 bg-white/5 rounded-2xl p-6 mb-10 border border-white/5">
-              <div className="flex justify-between items-center pb-3 border-b border-white/5">
-                <span className="text-[10px] tracking-widest uppercase font-bold text-gray-500">Service</span>
-                <span className="font-bold text-[#d4af37]">{formData.service}</span>
-              </div>
-              <div className="flex justify-between items-center pb-3 border-b border-white/5">
-                <span className="text-[10px] tracking-widest uppercase font-bold text-gray-500">Barber</span>
-                <span className="font-bold">{formData.barber}</span>
-              </div>
-              <div className="flex justify-between items-center pb-3 border-b border-white/5">
-                <span className="text-[10px] tracking-widest uppercase font-bold text-gray-500">Date</span>
-                <span className="font-bold">{new Date(formData.date).toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-[10px] tracking-widest uppercase font-bold text-gray-500">Time</span>
-                <span className="font-bold">{formData.time}</span>
-              </div>
-            </div>
-
+        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/40 backdrop-blur-sm p-6">
+          <div className="bg-white max-w-md w-full p-12 shadow-2xl text-center">
+            <h3 className="text-3xl font-medium mb-4 italic">Thank You</h3>
+            <p className="text-gray-500 text-sm mb-10 leading-relaxed font-light">Your session has been reserved. We look forward to seeing you at Luxe Barber.</p>
             <button 
               onClick={closeModal}
-              className="w-full py-4 border border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-black font-bold rounded-xl transition-all duration-300"
+              className="w-full py-4 border border-black text-black hover:bg-black hover:text-white transition-all text-[11px] font-bold tracking-[0.2em] uppercase"
             >
-              CLOSE SUMMARY
-            </button>
-            
-            {/* Close icon top right */}
-            <button 
-              onClick={closeModal}
-              className="absolute top-6 right-6 text-gray-500 hover:text-white transition-colors"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              Close Summary
             </button>
           </div>
         </div>
